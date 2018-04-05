@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Banská Bystrica</title>
+
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+    <style type="text/css">
+        html, body {
+          margin: 0;
+          padding: 0;
+          background-color: #111;
+        }
+        * {
+          box-sizing: border-box;
+        }
+        .slider {
+            max-width: 100%;
+            height: auto;
+        }
+        .slick-slide {
+        }
+        .slick-slide img {
+        }
+        .slick-prev:before,
+        .slick-next:before {
+          color: #111;
+        }
+        .slick-slide {
+          transition: all ease-in-out 0.7s;
+          opacity: 0.7;
+        }
+        
+        .slick-active {
+          opacity: 0.8;
+        }
+
+        .slick-current {
+          opacity: 1;
+        }
+
+        #slider-webcam {
+            max-width:100%;
+            height:auto;
+        }
+      </style>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <section class="slider">
+        <div id="slider-webcam">
+            <img id="camera-snp" src="http://imager.bbxnet.sk/nemasetie_snp.jpg">
+            <img id="camera-sloboda" src="http://imager.bbxnet.sk/nemasetie_slobody.jpg">
+            <img id="camera-panorama" src="http://imager.bbxnet.sk/bb_panorama.jpg">
+            <img id="camera-zv" src="http://imager.bbxnet.sk/zvolenska_cesta.jpg">
+            <img id="camera-pansky" src="http://imager.bbxnet.sk/pansky_diel.jpg">
+            <img id="camera-vartovka" src="http://imager.bbxnet.sk/hvezdaren.jpg">
+        </div>
+    </section>
+    <script>
+        var cam1 = document.getElementById('camera-snp'), 
+            cam2 = document.getElementById('camera-sloboda'), 
+            cam3 = document.getElementById('camera-panorama'); 
+            cam4 = document.getElementById('camera-zv'); 
+            cam5 = document.getElementById('camera-pansky'); 
+            cam6 = document.getElementById('camera-vartovka'); 
+
+            var refreshCams = function() 
+            { 
+                var postfix = new Date().getTime();
+                cam1.src = 'http://imager.bbxnet.sk/nemasetie_snp.jpg?cache=' + postfix; 
+                cam2.src = 'http://imager.bbxnet.sk/nemasetie_slobody.jpg?cache=' + postfix; 
+                cam3.src = 'http://imager.bbxnet.sk/bb_panorama.jpg?cache=' + postfix; 
+                cam4.src = 'http://imager.bbxnet.sk/zvolenska_cesta.jpg?cache=' + postfix; 
+                cam5.src = 'http://imager.bbxnet.sk/pansky_diel.jpg?cache=' + postfix; 
+                cam6.src = 'http://imager.bbxnet.sk/hvezdaren.jpg?cache=' + postfix; 
+            };
+
+        $(document).ready(function() { 
+            var camInterval = setInterval(refreshCams, 3000);
+        });
+    </script>
+    
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+    <script>
+        $(document).on('ready', function() {
+            $("#slider-webcam").slick({
+                dots: false,
+                arrows: false,
+                horizontal: true,
+                centerMode: false,
+                autoplay: true,
+                speed: 4000,
+                autoplaySpeed: 4000
+            });
+        }); 
+    </script>
+</body>
+</html>
